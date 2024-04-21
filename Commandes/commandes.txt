@@ -1,0 +1,260 @@
+Caplogy_Data_002@LAPTOP-ROOUAE14 MINGW64 /c/vagrant-vms/DevOps_Project2
+$ git clone https://github.com/hkhcoder/vprofile-project.git
+Cloning into 'vprofile-project'...
+remote: Enumerating objects: 487, done.
+Receiving objects: 100% (487/487), 7.68 MiB | 10.94 MiB/s, done.
+
+Resolving deltas: 100% (186/186), done.
+
+Caplogy_Data_002@LAPTOP-ROOUAE14 MINGW64 /c/vagrant-vms/DevOps_Project2
+$ ls
+AWS_Material/  Commandes/  images/  README.md  vprofile-project/
+
+Caplogy_Data_002@LAPTOP-ROOUAE14 MINGW64 /c/vagrant-vms/DevOps_Project2
+$ cd AWS_Material/
+
+Caplogy_Data_002@LAPTOP-ROOUAE14 MINGW64 /c/vagrant-vms/DevOps_Project2/AWS_Material
+$ ssh -i vprofile-prod-key.pem ec2-user@54.167.105.125
+The authenticity of host '54.167.105.125 (54.167.105.125)' can't be established.
+ED25519 key fingerprint is SHA256:aXwEsfzetOY2FYowdwOvxm2Nlq6ZyHTD+F0JgiL+1gw.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '54.167.105.125' (ED25519) to the list of known hosts.
+[ec2-user@ip-172-31-27-163 ~]$ sudo -i
+[root@ip-172-31-27-163 ~]# systemctl status mariadb
+● mariadb.service - MariaDB 10.5 database server
+     Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; preset: disabled)
+     Active: active (running) since Sun 2024-04-21 12:52:11 UTC; 15min ago
+       Docs: man:mariadbd(8)
+             https://mariadb.com/kb/en/library/systemd/
+    Process: 24533 ExecStartPre=/usr/libexec/mariadb-check-socket (code=exited, status=0/SUCCESS)
+    Process: 24555 ExecStartPre=/usr/libexec/mariadb-prepare-db-dir mariadb.service (code=exited, status=0/SUCCESS)        
+    Process: 24602 ExecStartPost=/usr/libexec/mariadb-check-upgrade (code=exited, status=0/SUCCESS)
+   Main PID: 24590 (mariadbd)
+[root@ip-172-31-27-163 ~]# curl http://169.254.169.254/latest/user-data
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>401 - Unauthorized</title>
+ </head>
+ <body>
+  <h1>401 - Unauthorized</h1>
+ </body>
+</html>
+[root@ip-172-31-27-163 ~]# curl http://169.254.169.254/latest/user-data
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>401 - Unauthorized</title>
+ </head>
+ <body>
+  <h1>401 - Unauthorized</h1>
+ </body>
+</html>
+[root@ip-172-31-27-163 ~]# mysql -u admin -padmin123 accounts
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 10.5.22-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [accounts]> show tables;
++--------------------+
+| Tables_in_accounts |
++--------------------+
+| role               |
+| user               |
+e| user_role          |
++--------------------+
+3 rows in set (0.000 sec)
+
+MariaDB [accounts]> quit
+
+[root@ip-172-31-27-163 ~]# exit
+[ec2-user@ip-172-31-27-163 ~]$ exit
+
+$ ssh -i vprofile-prod-key.pem ec2-user@54.237.105.253
+
+[ec2-user@ip-172-31-23-51 ~]$ sudo -i
+[root@ip-172-31-23-51 ~]# ss -tunlp | grep 11211
+
+[ec2-user@ip-172-31-23-51 ~]$ logout
+
+$ ssh -i vprofile-prod-key.pem ec2-user@34.224.61.87
+[root@ip-172-31-27-96 ~]# systemctl status
+[root@ip-172-31-27-96 ~]# systemctl status  rabbitmq-server
+[root@ip-172-31-27-96 ~]# exit
+[ec2-user@ip-172-31-27-96 ~]$ exit
+$ ssh -i vprofile-prod-key.pem ubuntu@34.203.240.5
+ubuntu@ip-172-31-16-80:~$ sudo -i
+root@ip-172-31-16-80:~# systemcl status tomcat9
+root@ip-172-31-16-80:~# systemctl status tomcat9
+root@ip-172-31-16-80:~# ls /var/lib/tomcat9/
+root@ip-172-31-16-80:~# ls /var/lib/tomcat9/webapps/
+root@ip-172-31-16-80:~# exit
+ubuntu@ip-172-31-16-80:~$ exit
+Connection to 34.203.240.5 closed.
+
+
+$ cd ..
+
+$ cd vprofile-project/
+
+$ mvn -version
+
+
+$ aws s3 mb s3://etixi-vpro-arts
+make_bucket: etixi-vpro-arts
+
+
+$ aws s3 cp target/vprofile-v2.war s3://etixi-vpro-arts/
+upload: target\vprofile-v2.war to s3://etixi-vpro-arts/vprofile-v2.war
+
+
+$ cd ..
+
+
+$ cd AWS_Material/
+
+
+$ ssh -i vprofile-prod-key.pem ubuntu@34.203.240.5
+
+
+root@ip-172-31-16-80:~# apt install awscli -y
+
+root@ip-172-31-16-80:~# aws s3 ls
+2024-04-21 15:01:18 etixi-vpro-arts
+
+root@ip-172-31-16-80:~# aws s3 cp s3://etixi-vpro-arts/vprofile-v2.war /tmp/
+download: s3://etixi-vpro-arts/vprofile-v2.war to ../tmp/vprofile-v2.war
+
+root@ip-172-31-16-80:~# systemctl stop tomcat9
+root@ip-172-31-16-80:~# rm -rf /var/lib/tomcat9/webapps/ROOT/
+
+root@ip-172-31-16-80:~# cp /tmp/vprofile-v2.war /var/lib/tomcat9/webapps/ROOT.war
+
+root@ip-172-31-16-80:~# systemctl start tomcat9
+
+root@ip-172-31-16-80:~# ls /var/lib/tomcat9/webapps/
+ROOT  ROOT.war
+
+
+root@ip-172-31-16-80:~# ls /var/lib/tomcat9/webapps/ROOT/
+META-INF  WEB-INF  resources
+
+
+root@ip-172-31-16-80:~# ls /var/lib/tomcat9/webapps/ROOT/WEB-INF/classes/application.properties 
+/var/lib/tomcat9/webapps/ROOT/WEB-INF/classes/application.properties
+
+root@ip-172-31-16-80:~# cat /var/lib/tomcat9/webapps/ROOT/WEB-INF/classes/application.properties
+#JDBC Configutation for Database Connection
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://db01:3306/accounts?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull        
+jdbc.username=admin
+jdbc.password=admin123
+
+#Memcached Configuration For Active and StandBy Host
+#For Active Host
+memcached.active.host=mc01
+memcached.active.port=11211
+#For StandBy Host
+memcached.standBy.host=127.0.0.2
+memcached.standBy.port=11211
+
+#RabbitMq Configuration
+rabbitmq.address=rmq01
+rabbitmq.port=5672
+rabbitmq.username=test
+rabbitmq.password=test
+
+#Elasticesearch Configuration
+elasticsearch.host =192.168.1.85
+elasticsearch.port =9300
+elasticsearch.cluster=vprofile
+elasticsearch.node=vprofilenode
+root@ip-172-31-16-80:~# cat /var/lib/tomcat9/webapps/ROOT/WEB-INF/classes/application.properties 
+#JDBC Configutation for Database Connection
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://db01:3306/accounts?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull        
+jdbc.username=admin
+jdbc.password=admin123
+
+#Memcached Configuration For Active and StandBy Host
+#For Active Host
+memcached.active.host=mc01
+memcached.active.port=11211
+#For StandBy Host
+memcached.standBy.host=127.0.0.2
+memcached.standBy.port=11211
+
+#RabbitMq Configuration
+rabbitmq.address=rmq01
+rabbitmq.port=5672
+rabbitmq.username=test
+rabbitmq.password=test
+
+#Elasticesearch Configuration
+elasticsearch.host =192.168.1.85
+elasticsearch.port =9300
+elasticsearch.cluster=vprofile
+elasticsearch.node=vprofilenode
+root@ip-172-31-16-80:~# cat /var/lib/tomcat9/webapps/ROOT/WEB-INF/classes/application.properties 
+#JDBC Configutation for Database Connection
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://db01:3306/accounts?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull        
+jdbc.username=admin
+jdbc.password=admin123
+
+#Memcached Configuration For Active and StandBy Host
+#For Active Host
+memcached.active.host=mc01
+memcached.active.port=11211
+#For StandBy Host
+memcached.standBy.host=127.0.0.2
+memcached.standBy.port=11211
+
+#RabbitMq Configuration
+rabbitmq.address=rmq01
+rabbitmq.port=5672
+rabbitmq.username=test
+rabbitmq.password=test
+
+#Elasticesearch Configuration
+elasticsearch.host =192.168.1.85
+elasticsearch.port =9300
+elasticsearch.cluster=vprofile
+elasticsearch.node=vprofilenode
+root@ip-172-31-16-80:~# exit
+logout
+ubuntu@ip-172-31-16-80:~$ exit
+logout
+Connection to 34.203.240.5 closed.
+
+Caplogy_Data_002@LAPTOP-ROOUAE14 MINGW64 /c/vagrant-vms/DevOps_Project2/AWS_Material
+$ ssh -i vprofile-prod-key.pem ec2-user@44.204.194.136
+The authenticity of host '44.204.194.136 (44.204.194.136)' can't be established.
+ED25519 key fingerprint is SHA256:OAeyjHG19Q1p0O+IIjDTrvzZJsMnKSgp9kcslGe596c.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '44.204.194.136' (ED25519) to the list of known hosts.
+[ec2-user@ip-172-31-93-202 ~]$ sudo -i
+[root@ip-172-31-93-202 ~]# systemctl status mariadb
+● mariadb.service - MariaDB 10.5 database server
+     Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; preset: disabled)
+     Active: active (running) since Sun 2024-04-21 17:11:24 UTC; 14s ago
+       Docs: man:mariadbd(8)
+             https://mariadb.com/kb/en/library/systemd/
+   Main PID: 23826 (mariadbd)
+     Status: "Taking your SQL requests now..."
+      Tasks: 14 (limit: 5736)
+     Memory: 81.1M
+[root@ip-172-31-93-202 ~]# http://169.254.169.254/latest/user-data
